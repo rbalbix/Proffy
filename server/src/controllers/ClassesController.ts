@@ -79,12 +79,13 @@ export default class ClassesController {
         };
       });
 
-      await trx('class_shedule').insert(classSchedule);
+      await trx('class_schedule').insert(classSchedule);
 
       await trx.commit();
 
       return response.status(201).send();
     } catch (err) {
+      console.error(err);
       trx.rollback();
 
       return response
